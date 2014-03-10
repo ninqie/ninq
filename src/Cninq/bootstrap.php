@@ -20,6 +20,7 @@
        }
     }
     spl_autoload_register('autoload');
+<<<<<<< HEAD
  
 
 
@@ -46,6 +47,8 @@
   	}
 
 
+=======
+>>>>>>> d875652d98481f4b50b42ee5ee85cebc41f27c92
     
 /**
  * Helper, wrap html_entites with correct character encoding
@@ -55,6 +58,7 @@
 }
 
 
+<<<<<<< HEAD
 
 
 	 
@@ -148,3 +152,12 @@ function formatDateTimeDiff($start, $startTimeZone=null, $end=null, $endTimeZone
   // Prepend 'since ' or whatever you like
   return $interval->format($format);
 }	 
+=======
+/**
+ * Set a default exception handler and enable logging in it.
+ */
+	 function exception_handler($exception) {
+	 echo "ninq: Uncaught exception: <p>" . $exception->getMessage() . "</p><pre>" . $exception->getTraceAsString(), "</pre>";
+	 }
+	 set_exception_handler('exception_handler');
+>>>>>>> d875652d98481f4b50b42ee5ee85cebc41f27c92

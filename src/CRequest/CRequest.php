@@ -82,12 +82,25 @@
         while($i<$len && $requestUri[$i] == $scriptName[$i]) {
         	$i++;
         }
+<<<<<<< HEAD
         $request = trim(substr($requestUri, $i), '/');
   
         // Remove the ?-part from the query when analysing controller/metod/arg1/arg2
         $queryPos = strpos($request, '?');
         if($queryPos !== false) {
         	$request = substr($request, 0, $queryPos);
+=======
+   
+        $query = trim(substr($requestUri, strlen(rtrim($scriptPart, '/'))), '/');   
+       	$pos = strcspn($query, '?');
+       	if($pos) {
+       		$query = substr($query, 0, $pos);
+       	}
+        
+        // Check if this looks like a querystring approach link
+        if(substr($query, 0, 1) === '?' && isset($_GET['q'])) {
+        	$query = trim($_GET['q']);
+>>>>>>> d875652d98481f4b50b42ee5ee85cebc41f27c92
         }
     
         // Check if request is empty and querystring link is set
@@ -136,7 +149,57 @@
   	return $url;
 	}
 
+<<<<<<< HEAD
 
+=======
+/**
+  * Create a url in the way it should be created.
+  *
+  */
+<<<<<<< HEAD
+	public function CreateUrl($url=null, $method=null, $arguments=null) {
+=======
+	public function CreateUrl($url=null, $method=null) {
+>>>>>>> 54b207c45d2f4e322a4c6c77068d2814af0d0f6c
+	 // If fully qualified just leave it.
+	 if(!empty($url) && (strpos($url, '://') || $url[0] == '/')) {
+	 	 return $url;
+	 }
+    
+	 // Get current controller if empty and method choosen
+<<<<<<< HEAD
+	 if(empty($url) && (!empty($method)|| !empty($arguments))) {
+	 	 $url = $this->controller;
+	 }
+	 // Get current method if empty and arguments choosen
+	 if(empty($method) && !empty($arguments)) {
+	 	 $method = $this->method;
+	 }
+=======
+	 if(empty($url) && !empty($method)) {
+	 	 $url = $this->controller;
+	 }
+    
+>>>>>>> 54b207c45d2f4e322a4c6c77068d2814af0d0f6c
+	 // Create url according to configured style
+	 $prepend = $this->base_url;
+	 if($this->cleanUrl) {
+	 	 ;
+	 } elseif ($this->querystringUrl) {
+	 $prepend .= 'index.php?q=';
+	 } else {
+	 $prepend .= 'index.php/';
+	 }
+<<<<<<< HEAD
+	 $url = trim($url, '/');
+	 $method = empty($method) ? null : '/' . trim($method, '/');
+	 $arguments = empty($arguments) ? null : '/' . trim($arguments, '/');
+	 return $prepend . rtrim("$url$method$arguments", '/');
+=======
+	 return $prepend . rtrim("$url/$method", '/');
+>>>>>>> 54b207c45d2f4e322a4c6c77068d2814af0d0f6c
+	}
+>>>>>>> d875652d98481f4b50b42ee5ee85cebc41f27c92
 
 	
 }

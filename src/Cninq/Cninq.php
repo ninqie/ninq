@@ -13,7 +13,14 @@ class Cninq implements ISingleton {
    public $db;
    public $views;
    public $session;
+<<<<<<< HEAD
    public $user;
+=======
+<<<<<<< HEAD
+   public $user;
+=======
+>>>>>>> 54b207c45d2f4e322a4c6c77068d2814af0d0f6c
+>>>>>>> d875652d98481f4b50b42ee5ee85cebc41f27c92
    public $timer = array();
    
 /**
@@ -23,6 +30,7 @@ class Cninq implements ISingleton {
       
       //time page gen
       $this->timer['first'] = microtime(true);
+<<<<<<< HEAD
      
       // include the site specific config.php and create a ref to $ly to be used by config.php
       $ninq = &$this;
@@ -37,6 +45,29 @@ class Cninq implements ISingleton {
       // Set default date/time-zone
       date_default_timezone_set('UTC');
      
+=======
+<<<<<<< HEAD
+     
+      // include the site specific config.php and create a ref to $ly to be used by config.php
+      $ninq = &$this;
+      require(NINQ_SITE_PATH.'/config.php');
+     
+      // Start a named session
+      session_name($this->config['session_name']);
+      session_start();
+      $this->session = new CSession($this->config['session_key']);
+      $this->session->PopulateFromSession();
+     
+      // Set default date/time-zone
+      date_default_timezone_set($this->config['timezone']);
+     
+=======
+      // include the site specific config.php and create a ref to $ly to be used by config.php
+      $ninq = &$this;
+      require(NINQ_SITE_PATH.'/config.php');
+      
+>>>>>>> 54b207c45d2f4e322a4c6c77068d2814af0d0f6c
+>>>>>>> d875652d98481f4b50b42ee5ee85cebc41f27c92
       // Create a database object.
       if(isset($this->config['database'][0]['dsn'])) {
         $this->db = new CMDatabase($this->config['database'][0]['dsn']);
@@ -45,8 +76,21 @@ class Cninq implements ISingleton {
       // Create a container for all views and theme data
       $this->views = new CViewContainer();
       
+<<<<<<< HEAD
       // Create a object for the user
       $this->user = new CMUser($this);
+=======
+<<<<<<< HEAD
+      // Create a object for the user
+      $this->user = new CMUser($this);
+=======
+      // Start a named session
+      session_name($this->config['session_name']);
+      session_start();
+      $this->session = new CSession($this->config['session_key']);
+      $this->session->PopulateFromSession();
+>>>>>>> 54b207c45d2f4e322a4c6c77068d2814af0d0f6c
+>>>>>>> d875652d98481f4b50b42ee5ee85cebc41f27c92
    }
    
    
@@ -117,12 +161,21 @@ class Cninq implements ISingleton {
   public function ThemeEngineRender() {
      // Save to session before output anything
      $this->session->StoreInSession();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> d875652d98481f4b50b42ee5ee85cebc41f27c92
      
      // Is theme enabled?
     if(!isset($this->config['theme'])) {
       return;
     }
     
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 54b207c45d2f4e322a4c6c77068d2814af0d0f6c
+>>>>>>> d875652d98481f4b50b42ee5ee85cebc41f27c92
      // Get the paths and settings for the theme
     $themeName    = $this->config['theme']['name'];
     $themePath    = NINQ_INSTALL_PATH . "/themes/{$themeName}";
