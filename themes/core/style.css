@@ -24,6 +24,7 @@ body{
    padding: 1em;
 }
 /**
+<<<<<<< HEAD
  * Login menu
  */
 #login-menu{float:right;font-size:smaller;}
@@ -74,6 +75,8 @@ label{font-size:smaller;}
 
 
 /**
+=======
+>>>>>>> 54b207c45d2f4e322a4c6c77068d2814af0d0f6c
  * User feedback message wrappers.
  */
 

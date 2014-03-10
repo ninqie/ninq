@@ -99,13 +99,18 @@
   * Create a url in the way it should be created.
   *
   */
+<<<<<<< HEAD
 	public function CreateUrl($url=null, $method=null, $arguments=null) {
+=======
+	public function CreateUrl($url=null, $method=null) {
+>>>>>>> 54b207c45d2f4e322a4c6c77068d2814af0d0f6c
 	 // If fully qualified just leave it.
 	 if(!empty($url) && (strpos($url, '://') || $url[0] == '/')) {
 	 	 return $url;
 	 }
     
 	 // Get current controller if empty and method choosen
+<<<<<<< HEAD
 	 if(empty($url) && (!empty($method)|| !empty($arguments))) {
 	 	 $url = $this->controller;
 	 }
@@ -113,6 +118,12 @@
 	 if(empty($method) && !empty($arguments)) {
 	 	 $method = $this->method;
 	 }
+=======
+	 if(empty($url) && !empty($method)) {
+	 	 $url = $this->controller;
+	 }
+    
+>>>>>>> 54b207c45d2f4e322a4c6c77068d2814af0d0f6c
 	 // Create url according to configured style
 	 $prepend = $this->base_url;
 	 if($this->cleanUrl) {
@@ -122,10 +133,14 @@
 	 } else {
 	 $prepend .= 'index.php/';
 	 }
+<<<<<<< HEAD
 	 $url = trim($url, '/');
 	 $method = empty($method) ? null : '/' . trim($method, '/');
 	 $arguments = empty($arguments) ? null : '/' . trim($arguments, '/');
 	 return $prepend . rtrim("$url$method$arguments", '/');
+=======
+	 return $prepend . rtrim("$url/$method", '/');
+>>>>>>> 54b207c45d2f4e322a4c6c77068d2814af0d0f6c
 	}
 
 	

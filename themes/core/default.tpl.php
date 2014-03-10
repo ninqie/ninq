@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title><?=$title?></title>
+<<<<<<< HEAD
   <link rel='shortcut icon' href="<?=$favicon?>">
   <link rel='stylesheet' href="<?=$stylesheet?>">
 </head>
@@ -20,13 +21,24 @@
   </div>
  </div>
  <div id='wrap-main'>
+=======
+  <link rel='stylesheet' href="<?=$stylesheet?>">
+</head>
+<body>
+  <div id='header'>
+    <?=$header?>
+  </div>
+>>>>>>> 54b207c45d2f4e322a4c6c77068d2814af0d0f6c
   <div id='main' role='main'>
     <?=get_messages_from_session()?>  
     <?=@$main?>
     <?=render_views()?>
   </div>
+<<<<<<< HEAD
  </div>
  <div id='wrap-footer'>
+=======
+>>>>>>> 54b207c45d2f4e322a4c6c77068d2814af0d0f6c
   <div id='footer'>
     <?=$footer?>
     <?=get_debug()?>

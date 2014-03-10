@@ -15,9 +15,14 @@ ini_set('display_errors', 1);
 /**
  * Define session name
  */
+<<<<<<< HEAD
  $ninq->config['session_name'] = preg_replace('/[:\.\/-_]/', '', __DIR__);
  $ninq->config['session_key']  = 'ninq';
  
+=======
+ $ninq->config['session_name'] = preg_replace('/[:\.\/-_]/', '', $_SERVER["SERVER_NAME"]);
+ $ninq->config['session_key']  = 'ninq';
+>>>>>>> 54b207c45d2f4e322a4c6c77068d2814af0d0f6c
 /**
  * Define server timezone
  */
@@ -78,8 +83,11 @@ ini_set('display_errors', 1);
  	 'index'     => array('enabled' => true,'class' => 'CCIndex'),
  	 'developer' => array('enabled' => true,'class' => 'CCDeveloper'),
  	 'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
+<<<<<<< HEAD
  	 'user'	     => array('enabled' => true,'class' => 'CCUser'),
  	 'acp'       => array('enabled' => true,'class' => 'CCAdminControlPanel'),
+=======
+>>>>>>> 54b207c45d2f4e322a4c6c77068d2814af0d0f6c
 );
  
  
