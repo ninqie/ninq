@@ -20,10 +20,7 @@
        }
     }
     spl_autoload_register('autoload');
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 28669f38949825b8a0b2573d25c0f2387f46c904
+
  
 
 
@@ -48,26 +45,13 @@
  		}
  		return false;
   	}
-
-
-<<<<<<< HEAD
-=======
-=======
->>>>>>> d875652d98481f4b50b42ee5ee85cebc41f27c92
->>>>>>> 28669f38949825b8a0b2573d25c0f2387f46c904
-    
+ 
 /**
  * Helper, wrap html_entites with correct character encoding
  */
  	function htmlent($str, $flags = ENT_COMPAT) {
 	return htmlentities($str, $flags, Cninq::Instance()->config['character_encoding']);
 }
-
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 28669f38949825b8a0b2573d25c0f2387f46c904
 
 
 	 
@@ -161,9 +145,7 @@ function formatDateTimeDiff($start, $startTimeZone=null, $end=null, $endTimeZone
   // Prepend 'since ' or whatever you like
   return $interval->format($format);
 }	 
-<<<<<<< HEAD
-=======
-=======
+
 /**
  * Set a default exception handler and enable logging in it.
  */
@@ -171,5 +153,4 @@ function formatDateTimeDiff($start, $startTimeZone=null, $end=null, $endTimeZone
 	 echo "ninq: Uncaught exception: <p>" . $exception->getMessage() . "</p><pre>" . $exception->getTraceAsString(), "</pre>";
 	 }
 	 set_exception_handler('exception_handler');
->>>>>>> d875652d98481f4b50b42ee5ee85cebc41f27c92
->>>>>>> 28669f38949825b8a0b2573d25c0f2387f46c904
+
