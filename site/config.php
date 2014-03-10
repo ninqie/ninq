@@ -4,6 +4,8 @@
  *
  */
 
+ 
+ 
 /**
  * Set level of error reporting
  */
@@ -14,7 +16,7 @@ ini_set('display_errors', 1);
  * Define session name
  */
  $ninq->config['session_name'] = preg_replace('/[:\.\/-_]/', '', $_SERVER["SERVER_NAME"]);
-
+ $ninq->config['session_key']  = 'ninq';
 /**
  * Define server timezone
  */
@@ -66,4 +68,21 @@ ini_set('display_errors', 1);
  $ninq->config['controllers'] = array(
  	 'index'     => array('enabled' => true,'class' => 'CCIndex'),
  	 'developer' => array('enabled' => true,'class' => 'CCDeveloper'),
+ 	 'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
 );
+ 
+ 
+/**
+ * Set Database
+ */
+$ninq->config['database'][0]['dsn'] = 'sqlite:' . NINQ_SITE_PATH . '/data/.ht.sqlite';
+
+
+/**
+ * Set what to show as debug or developer information in the get_debug() theme helper.
+ */
+$ninq->config['debug']['ninq']           = false;
+$ninq->config['debug']['session']        = false;
+$ninq->config['debug']['timer']          = true;
+$ninq->config['debug']['db-num-queries'] = true;
+$ninq->config['debug']['db-queries']     = true;

@@ -7,15 +7,38 @@
 class Cninq implements ISingleton {
 
    private static $instance = null;
-
+   public $config = array();
+   public $request;
+   public $data;
+   public $db;
+   public $views;
+   public $session;
+   public $timer = array();
    
 /**
   * Constructor
   */
    protected function __construct() {
+      
+      //time page gen
+      $this->timer['first'] = microtime(true);
       // include the site specific config.php and create a ref to $ly to be used by config.php
       $ninq = &$this;
       require(NINQ_SITE_PATH.'/config.php');
+      
+      // Create a database object.
+      if(isset($this->config['database'][0]['dsn'])) {
+        $this->db = new CMDatabase($this->config['database'][0]['dsn']);
+      }
+      
+      // Create a container for all views and theme data
+      $this->views = new CViewContainer();
+      
+      // Start a named session
+      session_name($this->config['session_name']);
+      session_start();
+      $this->session = new CSession($this->config['session_key']);
+      $this->session->PopulateFromSession();
    }
    
    
@@ -36,8 +59,9 @@ class Cninq implements ISingleton {
   */
   public function FrontControllerRoute() {
     
+
     // Take current url and divide it in controller, method and parameters
-    $this->request = new CRequest();
+    $this->request = new CRequest($this->config['url_type']);
     $this->request->Init($this->config['base_url']);
     $controller = $this->request->controller;
     $method     = $this->request->method;
@@ -62,9 +86,10 @@ class Cninq implements ISingleton {
     if($controllerExists && $controllerEnabled && $classExists) {
        $rc = new ReflectionClass($className);
        if($rc->implementsInterface('IController')) {
-            if($rc->hasMethod($method)) {
+             $formattedMethod = str_replace(array('_', '-'), '', $method); 
+       	       if($rc->hasMethod($formattedMethod)) {
               $controllerObj = $rc->newInstance();
-              $methodObj = $rc->getMethod($method);
+              $methodObj = $rc->getMethod($formattedMethod);
               $methodObj->invokeArgs($controllerObj, $arguments);
             } else {
               die("404. " . get_class() . ' error: Controller does not contain method.');
@@ -82,7 +107,9 @@ class Cninq implements ISingleton {
   * Theme Engine Render, renders the views using the selected theme.
   */
   public function ThemeEngineRender() {
-    // Get the paths and settings for the theme
+     // Save to session before output anything
+     $this->session->StoreInSession();
+     // Get the paths and settings for the theme
     $themeName    = $this->config['theme']['name'];
     $themePath    = NINQ_INSTALL_PATH . "/themes/{$themeName}";
     $themeUrl     = $this->request->base_url . "themes/{$themeName}";
@@ -99,7 +126,8 @@ class Cninq implements ISingleton {
     }
 
     // Extract $ly->data to own variables and handover to the template file
-    extract($this->data);     
+    extract($this->data); 
+    extract($this->views->GetData());     
     include("{$themePath}/default.tpl.php");
   	  
   	  
