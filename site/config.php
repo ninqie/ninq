@@ -15,9 +15,22 @@ ini_set('display_errors', 1);
 /**
  * Define session name
  */
+
  $ninq->config['session_name'] = preg_replace('/[:\.\/-_]/', '', __DIR__);
  $ninq->config['session_key']  = 'ninq';
  
+
+ $ninq->config['session_name'] = preg_replace('/[:\.\/-_]/', '', __DIR__);
+ $ninq->config['session_key']  = 'ninq';
+ 
+
+ $ninq->config['session_name'] = preg_replace('/[:\.\/-_]/', '', __DIR__);
+ $ninq->config['session_key']  = 'ninq';
+ 
+
+ $ninq->config['session_name'] = preg_replace('/[:\.\/-_]/', '', $_SERVER["SERVER_NAME"]);
+ $ninq->config['session_key']  = 'ninq';
+
 /**
  * Define server timezone
  */
@@ -96,12 +109,14 @@ ini_set('display_errors', 1);
  	 'index'     => array('enabled' => true,'class' => 'CCIndex'),
  	 'developer' => array('enabled' => true,'class' => 'CCDeveloper'),
  	 'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
+
  	 'user'	     => array('enabled' => true,'class' => 'CCUser'),
  	 'acp'       => array('enabled' => true,'class' => 'CCAdminControlPanel'),
  	 'content'   => array('enabled' => true,'class' => 'CCContent'),
  	 'blog'	     => array('enabled' => true,'class' => 'CCBlog'),
  	 'page'	     => array('enabled' => true,'class' => 'CCPage'),
- 	 'theme'     => array('enabled' => true,'class' => 'CCTheme'),
+ 	 'user'	     => array('enabled' => true,'class' => 'CCUser'),
+ 	 'acp'       => array('enabled' => true,'class' => 'CCAdminControlPanel'),
 );
  
  

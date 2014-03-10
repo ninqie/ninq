@@ -20,6 +20,10 @@
        }
     }
     spl_autoload_register('autoload');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 28669f38949825b8a0b2573d25c0f2387f46c904
  
 
 
@@ -46,6 +50,11 @@
   	}
 
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> d875652d98481f4b50b42ee5ee85cebc41f27c92
+>>>>>>> 28669f38949825b8a0b2573d25c0f2387f46c904
     
 /**
  * Helper, wrap html_entites with correct character encoding
@@ -55,6 +64,10 @@
 }
 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 28669f38949825b8a0b2573d25c0f2387f46c904
 
 
 	 
@@ -148,3 +161,15 @@ function formatDateTimeDiff($start, $startTimeZone=null, $end=null, $endTimeZone
   // Prepend 'since ' or whatever you like
   return $interval->format($format);
 }	 
+<<<<<<< HEAD
+=======
+=======
+/**
+ * Set a default exception handler and enable logging in it.
+ */
+	 function exception_handler($exception) {
+	 echo "ninq: Uncaught exception: <p>" . $exception->getMessage() . "</p><pre>" . $exception->getTraceAsString(), "</pre>";
+	 }
+	 set_exception_handler('exception_handler');
+>>>>>>> d875652d98481f4b50b42ee5ee85cebc41f27c92
+>>>>>>> 28669f38949825b8a0b2573d25c0f2387f46c904

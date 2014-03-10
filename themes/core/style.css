@@ -24,6 +24,13 @@ body{
    padding: 1em;
 }
 /**
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> d875652d98481f4b50b42ee5ee85cebc41f27c92
+>>>>>>> 28669f38949825b8a0b2573d25c0f2387f46c904
  * Login menu
  */
 #login-menu{float:right;font-size:smaller;}
@@ -70,10 +77,15 @@ label{font-size:smaller;}
 .validation-failed{border:2px solid red;}
 .validation-message{color:red;font-size:smaller;}
 .form-action-link{font-size:smaller;}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 28669f38949825b8a0b2573d25c0f2387f46c904
 textarea{width:500px;height:200px}
 
 
 /**
+<<<<<<< HEAD
  * User feedback message wrappers.
  */
 
@@ -89,6 +101,31 @@ padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; }
 .alert 
 { background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4; }
 
+=======
+=======
+
+
+
+/**
+=======
+>>>>>>> 54b207c45d2f4e322a4c6c77068d2814af0d0f6c
+>>>>>>> d875652d98481f4b50b42ee5ee85cebc41f27c92
+ * User feedback message wrappers.
+ */
+
+.error, 
+.alert, 
+.warning, 
+.notice, 
+.success, 
+.info { 
+padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; }
+
+.error, 
+.alert 
+{ background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4; }
+<<<<<<< HEAD
+
 .notice, 
 .warning 
 { background: #fff6bf; color: #514721; border-color: #ffd324; }
@@ -100,14 +137,41 @@ padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; }
 .alert a 
 { color: #8a1f11; }
 
+=======
+
+>>>>>>> 28669f38949825b8a0b2573d25c0f2387f46c904
+.notice, 
+.warning 
+{ background: #fff6bf; color: #514721; border-color: #ffd324; }
+
+.success       { background: #e6efc2; color: #264409; border-color: #c6d880; }
+.info          { background: #d5edf8; color: #205791; border-color: #92cae4; }
+
+.error a, 
+.alert a 
+{ color: #8a1f11; }
+
+<<<<<<< HEAD
+=======
+>>>>>>> d875652d98481f4b50b42ee5ee85cebc41f27c92
+>>>>>>> 28669f38949825b8a0b2573d25c0f2387f46c904
 .notice a, 
 .warning a 
 { color: #514721; }
 .success a      { color: #264409; }
 .info a         { color: #205791; }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 28669f38949825b8a0b2573d25c0f2387f46c904
 
 /**
 * Misc
 */
 .smaller-text{font-size:smaller;}
 .silent{color:#999;}
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> d875652d98481f4b50b42ee5ee85cebc41f27c92
+>>>>>>> 28669f38949825b8a0b2573d25c0f2387f46c904
