@@ -4,7 +4,7 @@
   *
   * @package ninqCore
   */
-class CMDatabase {
+class CDatabase {
 
 /**
   * Members
