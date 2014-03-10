@@ -1,5 +1,5 @@
 <h1>User Login</h1>
-<p>Pretend there's a form here. Use links. Use your imagination. BUT THAT'S OLD NEWS! </p>
+<p>Login with username(acornym or email) and password</p>
 
 <?=$login_form->GetHTML(array('start' => true))?>
   <fieldset>

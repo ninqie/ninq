@@ -1,4 +1,4 @@
-a:4:{s:4:"root";s:10:"style.less";s:8:"compiled";s:8556:"html,
+a:4:{s:4:"root";s:10:"style.less";s:8:"compiled";s:8966:"html,
 body,
 div,
 span,
@@ -315,6 +315,10 @@ label {
 .form-action-link {
   font-size: smaller;
 }
+textarea {
+  width: 100%;
+  height: 8em;
+}
 .content-edit input[type=text] {
   width: 30em;
 }
@@ -324,6 +328,8 @@ label {
 }
 html {
   background-color: #eec;
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
 }
 body {
   margin: 0;
@@ -332,8 +338,7 @@ body {
   background-color: #ffe;
 }
 #outer-wrap-header {
-  height: 88px;
-  margin-top: 11px;
+  padding-top: 11px;
   margin-bottom: 11px;
 }
 #inner-wrap-header {
@@ -393,6 +398,26 @@ body {
   text-align: center;
   font-size: 1.5em;
   padding-left: 10px;
+}
+#navbar ul.menu {
+  list-style-type: none;
+  padding: 2px 8px;
+  margin: 0;
+}
+#navbar ul.menu li {
+  padding: 0;
+  margin: 0;
+  display: inline;
+}
+#navbar ul.menu li a {
+  padding: 6px 8px;
+  text-decoration: none;
+}
+#navbar ul.menu li a:hover {
+  background: #ddc;
+}
+#navbar ul.menu li a.selected {
+  background: #ddd;
 }
 #inner-wrap-flash {
   width: 960px;
@@ -613,4 +638,4 @@ a:focus {
 .silent {
   color: #999;
 }
-";s:5:"files";a:2:{s:53:"C:\wamp\www\phpmvc\Kmom06\ninq\themes\grid\style.less";i:1394279488;s:81:"C:\wamp\www\phpmvc\Kmom06\ninq\themes\grid\semantic.gs\stylesheets\less\grid.less";i:1394279489;}s:7:"updated";i:1394280155;}
+";s:5:"files";a:2:{s:53:"C:\wamp\www\phpmvc\Kmom07\ninq\themes\grid\style.less";i:1394470378;s:81:"C:\wamp\www\phpmvc\Kmom07\ninq\themes\grid\semantic.gs\stylesheets\less\grid.less";i:1394279489;}s:7:"updated";i:1394470395;}

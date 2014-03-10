@@ -19,13 +19,16 @@ class CCIndex extends CObject implements IController {
   * Implementing interface IController. All controllers must have an index action.
   */
   	 public function Index() {   
-  	 $this->views->SetTitle('Index Controller');
-  	 $this->views->AddInclude(__DIR__ . '/index.tpl.php', array('menu'=>$this->Menu()));
+  	 $modules = new CMModules();
+  	 $controllers = $modules->AvailableControllers();
+  	 $this->views->SetTitle('Index')
+            	     ->AddInclude(__DIR__ . '/index.tpl.php', array(), 'primary')
+            	     ->AddInclude(__DIR__ . '/sidebar.tpl.php', array('controllers'=>$controllers), 'sidebar');
    }
 
-/**
+/*
  * Create a method that shows the menu, same for all methods
- */
+ *
  	private function Menu() {	
  	$items = array();
  	foreach($this->config['controllers'] as $key => $val) {
@@ -41,7 +44,7 @@ class CCIndex extends CObject implements IController {
  		}
  	}
     return $items;
-  }
+  }*/
    
    
 } 

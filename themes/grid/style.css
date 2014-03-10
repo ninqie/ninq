@@ -315,6 +315,10 @@ label {
 .form-action-link {
   font-size: smaller;
 }
+textarea {
+  width: 100%;
+  height: 8em;
+}
 .content-edit input[type=text] {
   width: 30em;
 }
@@ -324,6 +328,8 @@ label {
 }
 html {
   background-color: #eec;
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
 }
 body {
   margin: 0;
@@ -332,8 +338,7 @@ body {
   background-color: #ffe;
 }
 #outer-wrap-header {
-  height: 88px;
-  margin-top: 11px;
+  padding-top: 11px;
   margin-bottom: 11px;
 }
 #inner-wrap-header {
@@ -393,6 +398,26 @@ body {
   text-align: center;
   font-size: 1.5em;
   padding-left: 10px;
+}
+#navbar ul.menu {
+  list-style-type: none;
+  padding: 2px 8px;
+  margin: 0;
+}
+#navbar ul.menu li {
+  padding: 0;
+  margin: 0;
+  display: inline;
+}
+#navbar ul.menu li a {
+  padding: 6px 8px;
+  text-decoration: none;
+}
+#navbar ul.menu li a:hover {
+  background: #ddc;
+}
+#navbar ul.menu li a.selected {
+  background: #ddd;
 }
 #inner-wrap-flash {
   width: 960px;

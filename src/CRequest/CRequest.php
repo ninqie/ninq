@@ -71,7 +71,7 @@
   *
   * @param $baseUrl string use this as a hardcoded baseurl.
   */
-	public function Init($baseUrl = null) {
+	public function Init($baseUrl = null, $routing=null) {
         // Take current url and divide it in controller, method and arguments
         $requestUri = $_SERVER['REQUEST_URI'];
         $scriptName = $_SERVER['SCRIPT_NAME'];   
@@ -82,30 +82,27 @@
         while($i<$len && $requestUri[$i] == $scriptName[$i]) {
         	$i++;
         }
-
         $request = trim(substr($requestUri, $i), '/');
   
         // Remove the ?-part from the query when analysing controller/metod/arg1/arg2
         $queryPos = strpos($request, '?');
         if($queryPos !== false) {
         	$request = substr($request, 0, $queryPos);
-   
-        $query = trim(substr($requestUri, strlen(rtrim($scriptPart, '/'))), '/');   
-       	$pos = strcspn($query, '?');
-       	if($pos) {
-       		$query = substr($query, 0, $pos);
-       	}
-        
-        // Check if this looks like a querystring approach link
-        if(substr($query, 0, 1) === '?' && isset($_GET['q'])) {
-        	$query = trim($_GET['q']);
         }
     
         // Check if request is empty and querystring link is set
         if(empty($request) && isset($_GET['q'])) {
         	$request = trim($_GET['q']);
         }
- 	   $splits = explode('/', $request);
+ 	   
+        // Check if url matches an entry in routing table
+        $routed_from = null;
+        if(is_array($routing) && isset($routing[$request]) && $routing[$request]['enabled']) {
+        	$routed_from = $request;
+        	$request = $routing[$request]['url'];
+        }
+    
+        $splits = explode('/', $request);
     
    
        	// Set controller, method and arguments
@@ -113,7 +110,9 @@
        	$method     =  !empty($splits[1]) ? $splits[1] : 'index';
        	$arguments  = $splits;
        	unset($arguments[0], $arguments[1]); // remove controller & method part from argument list
-   
+       	
+       	
+    
        	// Prepare to create current_url and base_url
        	$currentUrl = $this->GetCurrentUrl();
        	$parts      = parse_url($currentUrl);
@@ -124,6 +123,7 @@
        	$this->current_url  = $currentUrl;
        	$this->request_uri  = $requestUri;
        	$this->script_name  = $scriptName;
+       	$this->routed_from  = $routed_from;
        	$this->request      = $request;
        	$this->splits       = $splits;
        	$this->controller   = $controller;
@@ -147,53 +147,6 @@
   	return $url;
 	}
 
-/**
-  * Create a url in the way it should be created.
-  *
-  */
-
-	public function CreateUrl($url=null, $method=null, $arguments=null) {
-
-	public function CreateUrl($url=null, $method=null) {
-
-	 // If fully qualified just leave it.
-	 if(!empty($url) && (strpos($url, '://') || $url[0] == '/')) {
-	 	 return $url;
-	 }
-    
-	 // Get current controller if empty and method choosen
-
-	 if(empty($url) && (!empty($method)|| !empty($arguments))) {
-	 	 $url = $this->controller;
-	 }
-	 // Get current method if empty and arguments choosen
-	 if(empty($method) && !empty($arguments)) {
-	 	 $method = $this->method;
-	 }
-
-	 if(empty($url) && !empty($method)) {
-	 	 $url = $this->controller;
-	 }
-    
-
-	 // Create url according to configured style
-	 $prepend = $this->base_url;
-	 if($this->cleanUrl) {
-	 	 ;
-	 } elseif ($this->querystringUrl) {
-	 $prepend .= 'index.php?q=';
-	 } else {
-	 $prepend .= 'index.php/';
-	 }
-
-	 $url = trim($url, '/');
-	 $method = empty($method) ? null : '/' . trim($method, '/');
-	 $arguments = empty($arguments) ? null : '/' . trim($arguments, '/');
-	 return $prepend . rtrim("$url$method$arguments", '/');
-
-	 return $prepend . rtrim("$url/$method", '/');
-
-	}
 
 
 	

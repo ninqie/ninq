@@ -65,7 +65,7 @@
     }
     
     if($type && $this['type'] == 'submit') {
-      return "<p><input id='$id'{$type}{$class}{$name}{$value}{$autofocus}{$readonly} /></p>\n";   
+      return "<span><input id='$id'{$type}{$class}{$name}{$value}{$autofocus}{$readonly} /></span>\n";   
     } else if($type && $this['type'] == 'textarea') {
         return "<p><label for='$id'>$label</label><br><textarea id='$id'{$type}{$class}{$name}{$autofocus}{$readonly}>{$onlyValue}</textarea></p>\n";
     } else if($type && $this['type'] == 'hidden') {
@@ -273,9 +273,9 @@ class CForm implements ArrayAccess {
     if(is_array($attributes)) {
       $this->form = array_merge($this->form, $attributes);
     }
-    $id = isset($this->form['id']) ? " id='{$this->form['id']}'" : null;
-    $class = isset($this->form['class']) ? " class='{$this->form['class']}'" : null;
-    $name = isset($this->form['name']) ? " name='{$this->form['name']}'" : null;
+    $id     = isset($this->form['id'])     ? " id='{$this->form['id']}'" : null;
+    $class  = isset($this->form['class'])  ? " class='{$this->form['class']}'" : null;
+    $name   = isset($this->form['name'])   ? " name='{$this->form['name']}'" : null;
     $action = isset($this->form['action']) ? " action='{$this->form['action']}'" : null;
     $method = " method='post'";
 
@@ -300,7 +300,16 @@ EOD;
 */
   public function GetHTMLForElements() {
     $html = null;
+    $buttonbar = null;
     foreach($this->elements as $element) {
+      // Wrap buttons in buttonbar.
+      if(!$buttonbar && $element['type'] == 'submit') {
+        $buttonbar = true;
+        $html .= '<p>';
+      } else if($buttonbar && $element['type'] != 'submit') {
+        $buttonbar = false;
+        $html .= '</p>\n';
+      }
       $html .= $element->GetHTML();
     }
     return $html;
