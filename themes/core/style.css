@@ -5,12 +5,15 @@
 /**
   * Structure
   */
-html{}
+html{background-color:#e56}
 
 body{
        background-color:#eee;
        font: 1em Verdana, Arial, Helvetica, sans-serif;
     }
+#wrap-header {}
+#wrap-main {}
+#wrap-footer {border-top:1px solid #ccc;background-color:#eee;}
 
 #header,
 #main,
@@ -20,4 +23,91 @@ body{
    background-color:#fff;
    padding: 1em;
 }
+/**
+ * Login menu
+ */
+#login-menu{float:right;font-size:smaller;}
+#login-menu img.gravatar{vertical-align:middle;}
+#login-menu a{text-decoration:none;}
+#login-menu a:hover{text-decoration:underline;}
 
+
+/**
+ * Banner
+ */
+#banner {display:table;margin-bottom:10px;}
+
+.site-logo,
+.site-title,
+.site-slogan {display:table-cell;width:inherit;vertical-align:middle;text-align:left;}
+
+.site-logo {}
+.site-title,
+.site-slogan {font-family:Arial, Helvetica, sans-serif;line-height:0;padding-left:20px;color:#333;}
+.site-title {font-size:4em;font-weight:bold;}
+.site-slogan {font-size:12px;}
+
+.site-title a {text-decoration:none;color:inherit;}
+.site-title a:hover {text-decoration:none;color:inherit;}
+
+
+/**
+ * Links
+ */
+a {color:#444;}
+a:link {}
+a:visited {}
+a:hover,
+a:focus {text-decoration:underline;color:#999;}
+a:active {}
+
+/**
+ * Forms
+ */
+input{font:inherit;}
+input[readonly]{color:#666;}
+label{font-size:smaller;}
+.validation-failed{border:2px solid red;}
+.validation-message{color:red;font-size:smaller;}
+.form-action-link{font-size:smaller;}
+textarea{width:500px;height:200px}
+
+
+/**
+ * User feedback message wrappers.
+ */
+
+.error, 
+.alert, 
+.warning, 
+.notice, 
+.success, 
+.info { 
+padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; }
+
+.error, 
+.alert 
+{ background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4; }
+
+.notice, 
+.warning 
+{ background: #fff6bf; color: #514721; border-color: #ffd324; }
+
+.success       { background: #e6efc2; color: #264409; border-color: #c6d880; }
+.info          { background: #d5edf8; color: #205791; border-color: #92cae4; }
+
+.error a, 
+.alert a 
+{ color: #8a1f11; }
+
+.notice a, 
+.warning a 
+{ color: #514721; }
+.success a      { color: #264409; }
+.info a         { color: #205791; }
+
+/**
+* Misc
+*/
+.smaller-text{font-size:smaller;}
+.silent{color:#999;}

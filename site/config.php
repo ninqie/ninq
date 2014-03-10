@@ -4,6 +4,8 @@
  *
  */
 
+ 
+ 
 /**
  * Set level of error reporting
  */
@@ -13,8 +15,9 @@ ini_set('display_errors', 1);
 /**
  * Define session name
  */
- $ninq->config['session_name'] = preg_replace('/[:\.\/-_]/', '', $_SERVER["SERVER_NAME"]);
-
+ $ninq->config['session_name'] = preg_replace('/[:\.\/-_]/', '', __DIR__);
+ $ninq->config['session_key']  = 'ninq';
+ 
 /**
  * Define server timezone
  */
@@ -29,6 +32,11 @@ ini_set('display_errors', 1);
  * Define language
  */
  $ninq->config['language'] = 'en';
+ 
+/**
+ * Allow or disallow creation of new user accounts.
+ */
+ $ninq->config['create_new_users'] = true;
  
 /**
  * Settings for the theme.
@@ -47,7 +55,10 @@ ini_set('display_errors', 1);
  */
  $ninq->config['url_type'] = 1;
  
- 
+/**
+ * How to hash password of new users, choose from: plain, md5salt, md5, sha1salt, sha1.
+ */
+ $ninq->config['hashing_algorithm'] = 'sha1salt';
  
 /**
  * Set a base_url to use another than the default calculated
@@ -66,4 +77,26 @@ ini_set('display_errors', 1);
  $ninq->config['controllers'] = array(
  	 'index'     => array('enabled' => true,'class' => 'CCIndex'),
  	 'developer' => array('enabled' => true,'class' => 'CCDeveloper'),
+ 	 'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
+ 	 'user'	     => array('enabled' => true,'class' => 'CCUser'),
+ 	 'acp'       => array('enabled' => true,'class' => 'CCAdminControlPanel'),
+ 	 'content'   => array('enabled' => true,'class' => 'CCContent'),
+ 	 'blog'	     => array('enabled' => true,'class' => 'CCBlog'),
+ 	 'page'	     => array('enabled' => true,'class' => 'CCPage'),
 );
+ 
+ 
+/**
+ * Set Database
+ */
+$ninq->config['database'][0]['dsn'] = 'sqlite:' . NINQ_SITE_PATH . '/data/.ht.sqlite';
+
+
+/**
+ * Set what to show as debug or developer information in the get_debug() theme helper.
+ */
+$ninq->config['debug']['ninq']           = false;
+$ninq->config['debug']['session']        = false;
+$ninq->config['debug']['timer']          = true;
+$ninq->config['debug']['db-num-queries'] = true;
+$ninq->config['debug']['db-queries']     = true;
