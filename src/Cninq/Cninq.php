@@ -7,15 +7,46 @@
 class Cninq implements ISingleton {
 
    private static $instance = null;
-
+   public $config = array();
+   public $request;
+   public $data;
+   public $db;
+   public $views;
+   public $session;
+   public $user;
+   public $timer = array();
    
 /**
   * Constructor
   */
    protected function __construct() {
+      
+      //time page gen
+      $this->timer['first'] = microtime(true);
+     
       // include the site specific config.php and create a ref to $ly to be used by config.php
       $ninq = &$this;
       require(NINQ_SITE_PATH.'/config.php');
+     
+      // Start a named session
+      session_name($this->config['session_name']);
+      session_start();
+      $this->session = new CSession($this->config['session_key']);
+      $this->session->PopulateFromSession();
+     
+      // Set default date/time-zone
+      date_default_timezone_set('UTC');
+     
+      // Create a database object.
+      if(isset($this->config['database'][0]['dsn'])) {
+        $this->db = new CMDatabase($this->config['database'][0]['dsn']);
+      }
+      
+      // Create a container for all views and theme data
+      $this->views = new CViewContainer();
+      
+      // Create a object for the user
+      $this->user = new CMUser($this);
    }
    
    
@@ -36,8 +67,9 @@ class Cninq implements ISingleton {
   */
   public function FrontControllerRoute() {
     
+
     // Take current url and divide it in controller, method and parameters
-    $this->request = new CRequest();
+    $this->request = new CRequest($this->config['url_type']);
     $this->request->Init($this->config['base_url']);
     $controller = $this->request->controller;
     $method     = $this->request->method;
@@ -62,9 +94,10 @@ class Cninq implements ISingleton {
     if($controllerExists && $controllerEnabled && $classExists) {
        $rc = new ReflectionClass($className);
        if($rc->implementsInterface('IController')) {
-            if($rc->hasMethod($method)) {
+             $formattedMethod = str_replace(array('_', '-'), '', $method); 
+       	       if($rc->hasMethod($formattedMethod)) {
               $controllerObj = $rc->newInstance();
-              $methodObj = $rc->getMethod($method);
+              $methodObj = $rc->getMethod($formattedMethod);
               $methodObj->invokeArgs($controllerObj, $arguments);
             } else {
               die("404. " . get_class() . ' error: Controller does not contain method.');
@@ -82,13 +115,21 @@ class Cninq implements ISingleton {
   * Theme Engine Render, renders the views using the selected theme.
   */
   public function ThemeEngineRender() {
-    // Get the paths and settings for the theme
+     // Save to session before output anything
+     $this->session->StoreInSession();
+     
+     // Is theme enabled?
+    if(!isset($this->config['theme'])) {
+      return;
+    }
+    
+     // Get the paths and settings for the theme
     $themeName    = $this->config['theme']['name'];
     $themePath    = NINQ_INSTALL_PATH . "/themes/{$themeName}";
     $themeUrl     = $this->request->base_url . "themes/{$themeName}";
    
     // Add stylesheet path to the $ly->data array
-    $this->data['stylesheet'] = "{$themeUrl}/style.css";
+    $this->data['stylesheet'] = "{$themeUrl}/" . $this->config['theme']['stylesheet'];
 
     // Include the global functions.php and the functions.php that are part of the theme
     $ninq = &$this;
@@ -99,8 +140,14 @@ class Cninq implements ISingleton {
     }
 
     // Extract $ly->data to own variables and handover to the template file
-    extract($this->data);     
-    include("{$themePath}/default.tpl.php");
+    
+    extract($this->data); 
+    extract($this->views->GetData());
+    if(isset($this->config['theme']['data'])) {
+      extract($this->config['theme']['data']);
+    }
+    $templateFile = (isset($this->config['theme']['template_file'])) ? $this->config['theme']['template_file'] : 'default.tpl.php';
+    include("{$themePath}/{$templateFile}");
   	  
   	  
     /*echo "<h1>I'm Cninq::ThemeEngineRender</h1><p>You are most welcome. Nothing to render at the moment</p>";
