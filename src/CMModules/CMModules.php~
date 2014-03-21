@@ -62,13 +62,13 @@ class CMModules extends CObject {
           if(!$dir = dir($src)) throw new Exception('Could not open the directory.');
           $modules = array();
           while (($module = $dir->read()) !== false) {
-          	  if(is_dir("$src/$module") && class_exists($module)) {
-        $modules[$module] = $this->GetDetailsOfModule($module);
-      }
-    }
-    $dir->close();
-    ksort($modules, SORT_LOCALE_STRING);
-    return $modules;
+          	  if(is_dir("$src/$module")&& class_exists($module)) {
+          	  	  $modules[$module] = $this->GetDetailsOfModule($module);
+          	  	  }
+          	  }
+          $dir->close();
+          ksort($modules, SORT_LOCALE_STRING);
+          return $modules;
       }
 /**
   * Install all modules.

@@ -1,6 +1,8 @@
 Options -MultiViews
 <IfModule mod_rewrite.c>
   RewriteEngine on
+  # Must use RewriteBase on www.student.bth.se, Rewritebase for url /~mos/test is /~mos/test/
+  #RewriteBase /phpmvc/
   #RewriteBase /~anrb13/phpmvc/Kmom07/ninq
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d

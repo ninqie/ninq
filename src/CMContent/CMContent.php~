@@ -111,6 +111,25 @@
     }
   }
   
+/*
+  * Init the database and create appropriate tables.
+  
+      public function Init() {
+        try {
+          $this->db->ExecuteQuery(self::SQL('drop table content'));
+          $this->db->ExecuteQuery(self::SQL('create table content'));
+          $this->db->ExecuteQuery(self::SQL('insert content'), array('hello-world', 'post', 'Hello World', 'This is a demo post.', 'plain', $this->user['id']));
+          $this->db->ExecuteQuery(self::SQL('insert content'), array('hello-world-again', 'post', 'Hello World Again', "This is another demo post.\n\nThis is another row in this demo post.", 'plain', $this->user['id']));
+          $this->db->ExecuteQuery(self::SQL('insert content'), array('hello-world-once-more', 'post', 'Hello World Once More', "This is one more demo post.\n\nThis is another row in this demo post.", 'plain', $this->user['id']));
+          $this->db->ExecuteQuery(self::SQL('insert content'), array('home', 'page', 'Home page', "This is a demo page, this could be your personal home-page.\n\nLots and lots of text, and some more and more and more and more and more and more.", 'plain', $this->user['id']));
+          $this->db->ExecuteQuery(self::SQL('insert content'), array('about', 'page', 'About page', "This is a demo page, this could be your personal about-page.\n\nSECRETS!", 'plain', $this->user['id']));
+          $this->db->ExecuteQuery(self::SQL('insert content'), array('download', 'page', 'Download page', "This is a demo page, this could be your personal download-page.\n\nSECRET DOWNLOADS OF BABY ELEPHANTS DANCING!", 'plain', $this->user['id']));
+          $this->AddMessage('success', 'Successfully created the database tables and created lots of pages and posts, owned by you.');
+        } catch(Exception$e) {
+          die("$e<br/>Failed to open database: " . $this->config['database'][0]['dsn']);
+        }
+      }
+     */
 
 /**
   * Save content. If it has a id, use it to update current entry or else insert new entry.
@@ -190,7 +209,32 @@
         }
       }
 
-
+/*/**
+  * Filter content according to a filter.
+  *
+  * @param $data string of text to filter and format according its filter settings.   * @returns string with the filtered data.
+  *
+  public static function Filter($data, $filter) {
+    switch($filter) {
+      case 'php': $data = nl2br(makeClickable(eval('?>'.$data))); break;
+      case 'html': $data = nl2br(makeClickable($data)); break;
+      case 'htmlpurify': $data = nl2br(CHTMLPurifier::Purify($data)); break;
+      case 'bbcode': $data = nl2br(bbcode2html(htmlEnt($data))); break;
+      case 'plain':
+      default: $data = nl2br(makeClickable(htmlEnt($data))); break;
+    }
+    return $data;
+  } 
+  
+/**
+  * Get the filtered content.
+  *
+  * @returns string with the filtered data.
+  *
+  public function GetFilteredData() {
+    return $this->Filter($this['data'], $this['filter']);
+  }
+  */
   
   
 }
