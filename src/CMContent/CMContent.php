@@ -92,7 +92,7 @@
           $this->db->ExecuteQuery(self::SQL('drop table content'));
           $this->db->ExecuteQuery(self::SQL('create table content'));
           $this->db->ExecuteQuery(self::SQL('insert content'), array('hello-world', 'post', 'Hello World', "This is a demo post.\n\nThis is another row in this demo post.", 'plain', $this->user['id']));
-          $this->db->ExecuteQuery(self::SQL('insert content'), array('hello-world-again', 'post', 'Hello World Again', "[b]This[/b] is another demo post.\n\nThis is another row in this demo post.[img]http://www.student.bth.se/~anrb13/phpmvc/Kmom10/themes/grid/logo_80x80.png[/img]", 'bbcode', $this->user['id']));
+          $this->db->ExecuteQuery(self::SQL('insert content'), array('hello-world-again', 'post', 'Hello World Again', "[b]This[/b] is another demo post.\n\nThis is another row in this demo post.[img]http://www.student.bth.se/~anrb13/phpmvc/Kmom10/ninq/themes/grid/logo_80x80.png[/img]", 'bbcode', $this->user['id']));
           $this->db->ExecuteQuery(self::SQL('insert content'), array('hello-world-once-more', 'post', 'Hello World Once More', "This is one more demo post.\n\nThis is another row in this demo post.", 'plain', $this->user['id']));
           $this->db->ExecuteQuery(self::SQL('insert content'), array('home', 'page', 'Home page', "This is a demo page, this could be your personal home-page.\n\nninq is a PHP-based MVC-inspired Content management Framework based on Lydia by Mikael Roos.", 'plain', $this->user['id']));
           $this->db->ExecuteQuery(self::SQL('insert content'), array('about', 'page', 'About page', "This is a demo page, this could be your personal about-page.", 'plain', $this->user['id']));
