@@ -285,7 +285,7 @@ class CForm implements ArrayAccess {
     
     $elements = $this->GetHTMLForElements();
     $html = <<< EOD
-<form{$id}{$class}{$name}{$action}{$method}>
+\n<form{$id}{$class}{$name}{$action}{$method}>
 <fieldset>
 {$elements}
 </fieldset>
@@ -308,7 +308,7 @@ EOD;
         $html .= '<p>';
       } else if($buttonbar && $element['type'] != 'submit') {
         $buttonbar = false;
-        $html .= '</p>';
+        $html .= '</p>\n';
       }
       $html .= $element->GetHTML();
     }

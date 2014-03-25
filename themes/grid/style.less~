@@ -158,7 +158,7 @@ textarea{width:100%;height:8em;}
 /** --------------------------------------------------------------
   * HTML & Body
   */
-html{ .alwaysShowScrollbar()}
+html{background-color:@bgcolor3; .alwaysShowScrollbar()}
 body{color:@color;background-color:@bgcolor3;padding:0;
 // &:hover{background:#fff url(grid_12_60_20.png) repeat-y center top;}
 }

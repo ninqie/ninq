@@ -8,11 +8,10 @@
       <?php if(isset($inline_style)): ?><style><?=$inline_style?></style><?php endif; ?>
     </head>
     <body>
-    <div id='wrapper' class='rounded-corner-bottom'>
 <div id='outer-wrap-header'>
 	<div id='inner-wrap-header'>
 	  <div id='header'>
-	     <div id='login-menu' class='rounded-corner-bottom-login'><?=login_menu()?></div>
+	     <div id='login-menu'><?=login_menu()?></div>
 	        <div id='banner'>
 	        <a href='<?=base_url()?>'><img id='site-logo' src='<?=theme_url($logo)?>' alt='logo' width='<?=$logo_width?>' height='<?=$logo_height?>' /></a>
 	        <span id='site-title'><a href='<?=base_url()?>'><?=$header?></a></span>
@@ -60,7 +59,7 @@
 	</div>
 <?php endif; ?>
 
-<div id='outer-wrap-footer' class='rounded-corner-bottom'>
+<div id='outer-wrap-footer'>
   <?php if(region_has_content('footer-column-one', 'footer-column-two', 'footer-column-three', 'footer-column-four')): ?>
     <div id='inner-wrap-footer-column'>
       <div id='footer-column-one'><?=render_views('footer-column-one')?></div>
@@ -70,10 +69,10 @@
     </div>
   <?php endif; ?>
 <div id='inner-wrap-footer'>
-  <div id='footer'>Kom ihåg att ta bort mig! <?=render_views('footer')?><?=$footer?><?=get_tools()?><?=get_debug()?></div>
+  <div id='footer'><?=render_views('footer')?><?=$footer?><?=get_tools()?><?=get_debug()?></div>
 </div>
 </div>
     
-</div>
+    
     </body>
     </html>

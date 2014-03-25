@@ -56,12 +56,7 @@
 
   // Make an array of the comma separated string $filter
   $filters = preg_replace('/\s/', '', explode(',', $filter));
-  if(strpos($filter, 'htmlpurify') !== FALSE || strpos($filter, 'bbcode') !== FALSE){
-  	  $data = nl2br($data);
-  }
-  else {
   $data = nl2br(self::makeClickable($data));
-  }
   // For each filter, call its function with the $text as parameter.
   foreach($filters as $func) {
     if(isset($valid[$func])) {

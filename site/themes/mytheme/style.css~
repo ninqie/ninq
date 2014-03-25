@@ -3,12 +3,9 @@
  */
  @import url(../../../themes/grid/style.css);
 
-
-body{background-color:#EBE0CE; color:#333}
-#wrapper{background-color:#ffe;}
+html{background-color:#eed;}
+body{background-color:#ffe;}
 #outer-wrap-header{background-color:#eed;border-bottom:2px solid #eed}
 #outer-wrap-footer{background-color:#eed}
-#login-menu{background-color:#C9C9BD}
 a{color:#444}
-a:hover{color:lighten(#444, 10%);text-decoration:underline}
 #navbar ul.menu li a.selected{background-color:#ffe;border-bottom:none;}

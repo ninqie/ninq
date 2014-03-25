@@ -12,17 +12,38 @@
      
 
 /**
-  * The page about me
+  * The home page
   */
       public function Index() {
-        $content = new CMContent();
-        $this->views->SetTitle('About me'.htmlEnt($content['title']))
+        $content = new CMContent(4);
+        $this->views->SetTitle('Home '.htmlEnt($content['title']))
                     ->AddInclude(__DIR__ . '/page.tpl.php', array(
                       'content' => $content,
                     ));
       }
-
-
+      
+/**
+  * The page about me
+  */
+      public function About() {
+        $content = new CMContent(5);
+        $this->views->SetTitle('About me '.htmlEnt($content['title']))
+                    ->AddInclude(__DIR__ . '/page.tpl.php', array(
+                      'content' => $content,
+                    ));
+      }
+      
+/**
+  * The download page
+  */
+      public function Downloads() {
+        $content = new CMContent(6);
+        $this->views->SetTitle('Downloads '.htmlEnt($content['title']))
+                    ->AddInclude(__DIR__ . '/page.tpl.php', array(
+                      'content' => $content,
+                    ));
+      }
+      
 /**
   * The blog.
   */
@@ -30,7 +51,7 @@
         $content = new CMContent();
         $this->views->SetTitle('My blog')
                     ->AddInclude(__DIR__ . '/blog.tpl.php', array(
-                      'contents' => $content->ListAll(array('type'=>'post', 'order-by'=>'title', 'order-order'=>'DESC')),
+                      'contents' => $content->ListAll(array('type'=>'post', 'order-by'=>'created', 'order-order'=>'DESC')),
                     ));
       }
 

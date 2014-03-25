@@ -65,7 +65,7 @@
   */
       public function Init() {
         $content = new CMContent();
-        $content->Manage('install');
+        $content->Init();
         $this->RedirectToController();
       }
      
