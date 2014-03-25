@@ -4,6 +4,7 @@ ninq
 My first MVC called ninq, based on Lydia by Mikael Roos. Made for the university course PHPMVC at Blekinge Tekniska Högskola Spring 2014
 
 Installation
+============
 Börja med att ladda ner ramverket från GitHub, öppna sedan .htaccess filen i ninq mappen och ändra 
 
 RewriteBase så den pekar på ninq mappen på din webbplats, ladda sedan upp ramverket på din server. Du kan 
@@ -20,11 +21,13 @@ rättigheter på site/data mappen, den behöver ha skriva, läsa och körrättig
 sedan på installationslänken module/install och följ instruktionerna där!
 
 Grundinställningar
+==================
 Som default skapas två användare, en admin med inlogg root:root och en vanlig användare med inlogg doe:doe.
 
 Det skapas även diverse demosidor som nås via menyn.
 
 Anpassa ramverket
+=================
 I config filen som ligger i site mappen kan ett antal inställningar ändras, bland annat logga och footern. 
 
 För att göra dessa lokalisera config filen i site mappen och öppna i exempelvis jEdit, scrolla längst ner i 
@@ -64,6 +67,7 @@ style.css i mappen themes/grid, där kan du ändra all styling.
 
 
 Skapa en blogg
+==============
 Det skapas automatiskt en demoblog när ramverket installeras med ett flertal inlägg. För att skapa ett 
 
 blogginlägg så klickar du på login på din webbplats, här väljer du Create user för att skapa en egen 
@@ -84,6 +88,7 @@ Blog i navbaren.
 
 
 Skapa en sida
+=============
 Principen är samma för att skapa en sida som att skapa en blogg, om du inte skapat en användare eller 
 
 loggat in så gör detta enligt stegen ovan. När du är inloggad klickar du in på Modules i navbaren och 
